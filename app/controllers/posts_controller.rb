@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     before_action :require_login, except: [:show]
-    before_actiong :find_post
+    before_actiong :find_post, only: [:show, :edit, :update, :destroy]
     
     def index
       @posts = policy_scope(Post).order(created_at: :desc)
@@ -11,44 +11,39 @@ class PostsController < ApplicationController
     end
   
     def new
-      # instantiate the form_for
-      @store = Store.new
-      authorize @store
+      @post = Post.new
+      authorize @post
     end
   
     def create
-      @store = Store.new(store_params)
-      @store.user = current_user
-      if @store.save
-        redirect_to store_path(@store)
+      @post = Post.new(post_params)
+      @post.user = current_user
+      if @post.save
+        redirect_to posts_path(@post)
       else
         render :new
       end
-      authorize @store
-    end
-  
-    def store_owner
-      authorize @store
+      authorize @post
     end
   
     def edit
     end
   
     def update
-      @store.update(store_params)
-      redirect_to store_path(@store)
-      authorize @store
+      @post.update(post_params)
+      redirect_to posts_path(@post)
+      authorize @post
     end
   
     def destroy
-      @store.destroy
-      redirect_to stores_path
+      @post.destroy
+      redirect_to posts_path
     end
   
     private
   
-    def store_params
-      params.require(:store).permit(:name, :address, :discount_breakpoints, :description, :photo)
+    def post_params
+      params.require(:post).permit(:title, :content, :private, :photo)
     end
   
     def find_post
