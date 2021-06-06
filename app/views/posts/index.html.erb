@@ -1,0 +1,14 @@
+<%# Post create button %>
+<%# if policy(@post).create? %>
+    <%= link_to "Create Post", new_post_path(@post) %>
+<%# end %>
+<br>
+<%# Post edit button %>
+<%# if policy(@post).update? %>
+    <%= link_to "Edit Post", new_post_path(@post) %>
+<%# end %>
+<br>
+<%# Post delete button %>
+<%# if policy(@post).destroy? %>
+    <%= link_to "Delete Post", new_post_path(@post) %>
+<%# end %>

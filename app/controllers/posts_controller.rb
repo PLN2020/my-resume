@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     before_action :require_login, except: [:show]
-    before_actiong :find_post, only: [:show, :edit, :update, :destroy]
+    before_action :find_post, only: [:show, :edit, :update, :destroy]
     
     def index
       @posts = policy_scope(Post).order(created_at: :desc)
