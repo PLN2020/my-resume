@@ -1,1 +1,12 @@
-<%= link_to "Create Post", new_post_path(@post) %>
+
+
+<div class="container">
+    <%= link_to "Create Post", new_post_path(@post) %>
+    <br>
+    <br>
+    <ul>
+        <% @posts.each do |post| %>
+            <h2><%= link_to post.title, post_path(post) %></h2>
+        <% end %>
+    </ul>
+</div>
