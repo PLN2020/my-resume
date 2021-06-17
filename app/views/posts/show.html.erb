@@ -1,6 +1,13 @@
-<%= link_to "Edit Post", edit_post_path(@post) %>
+<%= link_to "Back", posts_path %>
 
 <div class="container">
     <h2><%= @post.title %></h2>
+    <p>
+        <%= @created_at.strftime("Created on %Y/%m/%d at %I:%M%p") %>
+        <br>
+        <%= @updated_at.strftime("Last updated on %Y/%m/%d at %I:%M%p") %>
+    </p>
     <p><%= @post.content %></p>
 </div>
+
+<%= link_to "Edit Post", edit_post_path(@post) %>
