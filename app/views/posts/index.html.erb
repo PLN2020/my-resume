@@ -6,7 +6,7 @@
     <br>
     <ul>
         <% @posts.each do |post| %>
-            <h2><%= link_to post.title, post_path(post) %></h2>
+            <h4><%= link_to post.title, post_path(post) %></h4>
         <% end %>
     </ul>
 </div>
