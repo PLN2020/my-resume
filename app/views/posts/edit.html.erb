@@ -1,7 +1,10 @@
+<%= link_to "Back", post_path(@post) %>
+
 <div class="container">
     <%= simple_form_for(@post) do |f| %>
         <%= f.input :title %>
         <%= f.input :content %>
+        <%= f.input :photo, as: :file %>
         <%= f.input :private, as: :boolean %>
         <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>

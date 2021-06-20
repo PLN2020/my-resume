@@ -1,13 +1,22 @@
 <%= link_to "Back", posts_path %>
 
 <div class="container">
-    <h2><%= @post.title %></h2>
-    <p>
-        <%= @created_at.strftime("Created on %Y/%m/%d at %I:%M%p") %>
-        <br>
-        <%= @updated_at.strftime("Last updated on %Y/%m/%d at %I:%M%p") %>
-    </p>
-    <p><%= @post.content %></p>
+  <h2><%= @post.title %></h2>
+  <p>
+    <%= @created_at.strftime("Created on %Y/%m/%d at %I:%M%p") %>
+    <br>
+    <%= @updated_at.strftime("Last updated on %Y/%m/%d at %I:%M%p") %>
+  </p>
+  
+  <div>
+    <% if @post.photo.attached? %>
+        <%= cl_image_tag @post.photo.key, height: 400, width: 400, crop: :fill %>
+    <% else %>
+        <p>No image uploaded</p>
+    <% end %>
+  </div>
+  
+  <p><%= @post.content %></p>
 </div>
 
 <%= link_to "Edit Post", edit_post_path(@post) %>
