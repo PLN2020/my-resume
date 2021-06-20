@@ -7,6 +7,8 @@ class PostsController < ApplicationController
     end
   
     def show
+      @created_at = @post.created_at
+      @updated_at = @post.updated_at
       authorize @post
     end
   
@@ -31,7 +33,7 @@ class PostsController < ApplicationController
   
     def update
       @post.update(post_params)
-      redirect_to posts_path(@post)
+      redirect_to post_path(@post)
       authorize @post
     end
   
